@@ -5,7 +5,7 @@ dependencies. This file contains the required macros to pull these dependencies
 """
 
 load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
-load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories")
+load("@build_bazel_rules_nodejs//:index.bzl", "node_repositories", "npm_install")
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
 # buildifier: disable=unnamed-macro
@@ -36,3 +36,9 @@ def transitive_deps(is_top_level = False):
         )
 
     node_repositories()
+
+    npm_install(
+        name = "rules_rust_example_wasm_webpage_npm_deps",
+        package_json = "//wasm_webpage:package.json",
+        package_lock_json = "//wasm_webpage:package-lock.json",
+    )

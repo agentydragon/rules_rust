@@ -11,3 +11,5 @@ deps()
 load(":examples_transitive_deps.bzl", "transitive_deps")
 
 transitive_deps()
+
+register_toolchains("//wasm_webpage:wasm-bindgen-toolchain")

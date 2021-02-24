@@ -1,0 +1,22 @@
+[package]
+name = "rules_rust_examples_wasm_webpage"
+version = "0.0.1"
+
+[[bin]]
+name = "fake"
+path = "fake.rs"
+
+[dependencies]
+# Matches @rules_rust//wasm_bindgen/raze/Cargo.toml
+wasm-bindgen = "0.2.68"
+# web-sys 0.3.45 has dependency on wasm-bindgen ^0.2.68
+web-sys = { version = "0.3.45", features = ["console"] }
+
+
+[package.metadata.raze]
+workspace_path = "//wasm_webpage/raze"
+genmode = "Remote"
+gen_workspace_prefix = "rules_rust_examples_wasm_webpage"
+rust_rules_workspace_name = "rules_rust"
+package_aliases_dir = "raze"
+default_gen_buildrs = true
